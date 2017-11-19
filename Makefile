@@ -32,3 +32,12 @@ go-example:
 	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" ${GOBUILD} -v -o go-example
 
 build: prepare go-example
+
+install:
+	install -Dm755 go-example ${DESTDIR}${PREFIX}/bin/go-example
+
+clean:
+	-rm -rf ${GOPATH_DIR}
+	-rm -f go-example
+
+rebuild: clean build
